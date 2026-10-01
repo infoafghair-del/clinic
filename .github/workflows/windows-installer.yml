@@ -1,35 +1,32 @@
 name: Build Windows Installer
 
 on:
-workflow_dispatch:
-push:
-branches:
-- main
+  workflow_dispatch:
+  push:
+    branches:
+      - main
 
 jobs:
-build:
-runs-on: windows-latest
+  build:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
 
-```
-steps:
-  - name: Checkout source
-    uses: actions/checkout@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
 
-  - name: Setup Node.js
-    uses: actions/setup-node@v4
-    with:
-      node-version: 22
+      - name: Install dependencies
+        run: npm install
 
-  - name: Install dependencies
-    run: npm install
+      - name: Build Windows installer
+        run: npm run build -- --publish never
 
-  - name: Build Windows installer
-    run: npm run build -- --publish never
-
-  - name: Upload Windows installer
-    uses: actions/upload-artifact@v4
-    with:
-      name: AestheticFlow-Windows-Installer
-      path: dist/*.exe
-      if-no-files-found: error
-```
+      - name: Upload Windows installer
+        uses: actions/upload-artifact@v4
+        with:
+          name: AestheticFlow-Windows-Installer
+          path: "dist/*.exe"
+          if-no-files-found: error
