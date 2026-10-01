@@ -1,25 +1,35 @@
-infoafghair-del
-infoafghair-del
-Update build-windows.yml
-28754e3
- · 
-5 minutes ago
-Name		
-.github/workflows
-Update build-windows.yml
-5 minutes ago
-README.md
-Add files via upload
-1 hour ago
-app-bundle.js
-Add files via upload
-1 hour ago
-electron.js
-Create electron.js
-50 minutes ago
-index.html
-Add files via upload
-1 hour ago
-package.json
-Create package.json
-52 minutes ago
+```yaml
+name: Build Windows Installer
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build Windows installer
+        run: npm run build -- --publish never
+
+      - name: Upload Windows installer
+        uses: actions/upload-artifact@v4
+        with:
+          name: AestheticFlow-Windows-Installer
+          path: dist/*.exe
+          if-no-files-found: error
+```
