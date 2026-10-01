@@ -7,10 +7,6 @@ on:
   workflow_dispatch:
 
 jobs:
-
-  # ============================================================
-  # WINDOWS 64-BIT
-  # ============================================================
   build-windows-x64:
     name: Windows 64-bit
     runs-on: windows-latest
@@ -30,16 +26,12 @@ jobs:
       - name: Build Windows x64
         run: npx electron-builder@26.15.3 --win nsis --x64 --publish never
 
-      - name: Upload Windows x64 installer
+      - name: Upload x64 installer
         uses: actions/upload-artifact@v4
         with:
           name: Clinic-Windows-x64
           path: release/*.exe
 
-
-  # ============================================================
-  # WINDOWS 32-BIT
-  # ============================================================
   build-windows-ia32:
     name: Windows 32-bit
     runs-on: windows-latest
@@ -59,43 +51,8 @@ jobs:
       - name: Build Windows 32-bit
         run: npx electron-builder@26.15.3 --win nsis --ia32 --publish never
 
-      - name: Upload Windows 32-bit installer
+      - name: Upload 32-bit installer
         uses: actions/upload-artifact@v4
         with:
           name: Clinic-Windows-32bit
-          path: release/*.exe
-
-
-  # ============================================================
-  # WINDOWS 7 32-BIT LEGACY
-  # ============================================================
-  build-windows7:
-    name: Windows 7 32-bit Legacy
-    runs-on: windows-latest
-
-    steps:
-      - name: Checkout source
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 22
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Install Electron 22
-        run: npm install --save-dev electron@22.3.27
-
-      - name: Install electron-builder
-        run: npm install --save-dev electron-builder@24.13.3
-
-      - name: Build Windows 7 32-bit
-        run: npx electron-builder --win nsis --ia32 --publish never
-
-      - name: Upload Windows 7 installer
-        uses: actions/upload-artifact@v4
-        with:
-          name: Clinic-Windows7-32bit
           path: release/*.exe
