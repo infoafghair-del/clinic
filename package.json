@@ -3,9 +3,14 @@
   "version": "1.0.0",
   "description": "Clinic Management Application",
   "author": "Afghair",
-  "main": "main.js",
+  "main": "electron.js",
   "scripts": {
+    "start": "electron .",
     "dist": "electron-builder"
+  },
+  "devDependencies": {
+    "electron": "38.0.0",
+    "electron-builder": "26.15.3"
   },
   "build": {
     "appId": "com.afghair.clinic",
@@ -13,6 +18,12 @@
     "directories": {
       "output": "release"
     },
+    "files": [
+      "electron.js",
+      "index.html",
+      "app-bundle.js",
+      "package.json"
+    ],
     "win": {
       "target": [
         {
