@@ -1,4 +1,12 @@
 {
+  "name": "clinic",
+  "version": "1.0.0",
+  "description": "Clinic Management Application",
+  "author": "Afghair",
+  "main": "main.js",
+  "scripts": {
+    "dist": "electron-builder"
+  },
   "build": {
     "appId": "com.afghair.clinic",
     "productName": "Clinic",
