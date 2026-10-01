@@ -1,4 +1,3 @@
-```yaml
 name: Build Windows Installer
 
 on:
@@ -33,4 +32,3 @@ jobs:
           name: AestheticFlow-Windows-Installer
           path: dist/*.exe
           if-no-files-found: error
-```
