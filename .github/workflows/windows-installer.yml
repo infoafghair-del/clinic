@@ -1,32 +1,27 @@
-name: Windows Installer
-
-on:
-  push:
-    branches:
-      - main
-  workflow_dispatch:
-
-jobs:
-  build-windows:
-    runs-on: windows-latest
-
-    steps:
-      - name: Checkout source
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Build Windows installer
-        run: npx electron-builder --win nsis --x64 --publish never
-
-      - name: Upload Windows installer
-        uses: actions/upload-artifact@v4
-        with:
-          name: Clinic-Windows-x64
-          path: release/*.exe
+10s
+1s
+2m 40s
+Run npx electron-builder --win nsis --x64 --publish never
+npm warn exec The following package was not found and will be installed: electron-builder@26.15.3
+npm warn EBADENGINE Unsupported engine {
+npm warn EBADENGINE   package: '@electron/rebuild@4.2.0',
+npm warn EBADENGINE   required: { node: '>=22.12.0' },
+npm warn EBADENGINE   current: { node: 'v20.20.2', npm: '10.8.2' }
+npm warn EBADENGINE }
+npm warn EBADENGINE Unsupported engine {
+npm warn EBADENGINE   package: 'node-abi@4.35.0',
+npm warn EBADENGINE   required: { node: '>=22.12.0' },
+npm warn EBADENGINE   current: { node: 'v20.20.2', npm: '10.8.2' }
+npm warn EBADENGINE }
+npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
+npm warn deprecated rimraf@2.6.3: Rimraf versions prior to v4 are no longer supported
+npm warn deprecated glob@7.2.3: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+npm warn deprecated boolean@3.2.0: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
+  • electron-builder  version=26.15.3 os=10.0.26100
+  • loaded configuration  file=package.json ("build" field)
+  ⨯ Cannot compute electron version from installed node modules - none of the possible electron modules are installed.
+See https://github.com/electron-userland/electron-builder/issues/3984#issuecomment-504968246
+Error: Process completed with exit code 1.
+0s
+0s
+3s
