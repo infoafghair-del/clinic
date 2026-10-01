@@ -22,12 +22,6 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Install Electron
-        run: npm install --save-dev electron@38.0.0
-
-      - name: Install Electron Builder
-        run: npm install --save-dev electron-builder@26.15.3
-
       - name: Build Windows installer
         run: npx electron-builder --win nsis --x64 --publish never
 
